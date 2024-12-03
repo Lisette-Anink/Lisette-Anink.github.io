@@ -21,6 +21,9 @@ type Post struct {
 	Day         int
 	Title       string
 	Content     string
+	Author      string
+	PublishedAt time.Time
+	Status      string
 	HeaderImage Image
 	Images      []Image
 }
@@ -29,6 +32,10 @@ type Image struct {
 	Alt   string
 	Title string
 }
+
+const StatusPublished = "published"
+const StatusPreview = "preview"
+const StatusDraft = "draft"
 
 func (post *Post) Slug() string {
 	if post == nil {
@@ -66,4 +73,15 @@ func GetJsonPosts() []Post {
 		return strings.Compare(i.Title, j.Title)
 	})
 	return posts
+}
+
+func Filter(posts []Post, status string) []*Post {
+	filtered := []*Post{}
+
+	for i := range posts {
+		if posts[i].Status == status {
+			filtered = append(filtered, &posts[i])
+		}
+	}
+	return filtered
 }

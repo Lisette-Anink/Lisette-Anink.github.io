@@ -9,10 +9,11 @@ templ Layout(title string) {
 			<meta charset="UTF-8"/>
 			<title>{ title }</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-			<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-			<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
-			<link rel="manifest" href="/site.webmanifest"/>
+			<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"/>
+			<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+			<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"/>
+			<link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
+			<link rel="manifest" href="/images/site.webmanifest"/>
 			<link href="/assets/output.css" rel="stylesheet"/>
 			<script src="https://unpkg.com/hyperscript.org@0.9.13"></script>
 			<link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -34,7 +35,7 @@ templ menu() {
 			<div class="flex lg:flex-1">
 				<a href="/" class="p-1.5">
 					<span class="sr-only">Home</span>
-					<img class="mt-2.5 h-4/5" src="/assets/images/logo_horizontal.svg"/>
+					<img class="h-16 sm:h-18 w-auto" src="/assets/images/logo_horizontal.svg"/>
 				</a>
 			</div>
 			<div class="flex lg:hidden">
@@ -62,7 +63,7 @@ templ menu() {
 				<div class="h-20 flex items-center justify-between">
 					<a href="#" class="-m-1.5 p-1.5">
 						<span class="sr-only">Onze blog</span>
-						<img class="mt-2.5 h-4/5" src="/assets/images/logo_horizontal.svg"/>
+						<img class="h-16 sm:h-18 w-auto" src="/assets/images/logo_horizontal.svg"/>
 					</a>
 					<button
 						type="button"

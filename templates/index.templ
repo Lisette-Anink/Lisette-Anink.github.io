@@ -20,7 +20,9 @@ templ IndexPage(posts []models.Post) {
 					</p>
 				</article>
 				for _, post := range posts {
-					@postLinkCard(post)
+					if post.Status == models.StatusPublished {
+						@postLinkCard(post)
+					}
 				}
 				<div class="relative rounded-xl overflow-hidden">
 					<a href="kaart">

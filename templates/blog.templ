@@ -8,8 +8,7 @@ import (
 )
 
 type BlogData struct {
-	Post     models.Post
-	Posts    []models.Post
+	Post     *models.Post
 	Next     *models.Post
 	Previous *models.Post
 }
@@ -30,6 +29,9 @@ templ contentComponent(data BlogData) {
 	<div class="max-w-6xl mx-6 xl:mx-auto mb-24">
 		@nextPrevButtons(data)
 		<div class="columns-2 md:columns-3 gap-4 space-y-4">
+			if data.Post.Author != "" {
+				@author(data.Post)
+			}
 			<article>
 				@templ.Raw(data.Post.HTML())
 			</article>
@@ -47,7 +49,7 @@ templ nextPrevButtons(data BlogData) {
 				<div class="flex items-center">
 					if data.Previous != nil {
 						<a href={ templ.SafeURL(path.Join("/", data.Previous.Slug(), "/")) } class="inline-flex items-center  py-2 pr-4 pl-3 rounded-xl border border-1 border-green-600 text-sm font-medium text-green-600 hover:text-white hover:bg-green-600" aria-current="page">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4 shrink-0 text-green-600">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4 shrink-0">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
 							</svg>
 							<span class="ml-4">Vorige</span>
@@ -60,7 +62,7 @@ templ nextPrevButtons(data BlogData) {
 					if data.Next != nil {
 						<a href={ templ.SafeURL(path.Join("/", data.Next.Slug(), "/")) } class="inline-flex items-center py-2 pl-4 pr-3 rounded-xl border border-1 border-green-600 text-sm font-medium text-green-600 hover:text-white hover:bg-green-600" aria-current="page">
 							<span class="mr-4">Volgende</span>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4 shrink-0 text-green-600">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4 shrink-0">
 								<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
 							</svg>
 						</a>
@@ -178,4 +180,20 @@ templ carousel(data BlogData) {
 			}%)`;
 		}
 	</script>
+}
+
+templ author(post *models.Post) {
+	<div class="group block shrink-0">
+		<div class="flex items-center">
+			<div>
+				<img class="inline-block size-9 rounded-full" src="https://placebear.com/200/300" alt=""/>
+			</div>
+			<div class="ml-3">
+				<p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+					{ post.Author }
+				</p>
+				<p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">{ post.PublishedAt.Format("02-01-2006") }</p>
+			</div>
+		</div>
+	</div>
 }

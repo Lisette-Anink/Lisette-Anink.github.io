@@ -14,10 +14,11 @@ import (
 var prevPost *models.Post
 var nextPost *models.Post
 
+const rootPath = "public"
+
 func main() {
 	posts := models.GetJsonPosts()
 	// Output path.
-	rootPath := "public"
 	if err := os.Mkdir(rootPath, 0755); err != nil && !os.IsExist(err) {
 		log.Fatalf("failed to create output directory: %v", err)
 	}
@@ -36,24 +37,36 @@ func main() {
 	// Create the Static pages
 	addStatic(rootPath, templates.MapPath, templates.MapPage())
 	addStatic(rootPath, templates.AboutPath, templates.AboutPage())
+	published := models.Filter(posts, models.StatusPublished)
 	// Create a page for each post.
-	for i, post := range posts {
-		if len(posts) > i+1 {
-			nextPost = &posts[i+1]
-		} else {
-			nextPost = nil
-		}
-		// Create the output directory.
-		dir := path.Join(rootPath, post.Slug())
-		f := createDirAndIndex(dir)
-		// Create the output file.
+	for i, post := range published {
+		createPostPage(post, i, published)
+	}
+	previews := models.Filter(posts, models.StatusPreview)
+	// Create a page for each post.
+	for i, post := range previews {
+		createPostPage(post, i, previews)
+	}
+}
 
-		data := templates.BlogData{Post: post, Posts: posts, Next: nextPost, Previous: prevPost}
-		err = templates.ContentPage(data).Render(context.Background(), f)
-		if err != nil {
-			log.Fatalf("failed to write output file: %v", err)
-		}
-		prevPost = &post
+func createPostPage(post *models.Post, i int, filtered []*models.Post) {
+	if len(filtered) > i+1 {
+		nextPost = filtered[i+1]
+	} else {
+		nextPost = nil
+	}
+	// Create the output directory.
+	dir := path.Join(rootPath, post.Slug())
+	f := createDirAndIndex(dir)
+
+	// Create the output file.
+	data := templates.BlogData{Post: post, Next: nextPost, Previous: prevPost}
+	err := templates.ContentPage(data).Render(context.Background(), f)
+	if err != nil {
+		log.Fatalf("failed to write output file: %v", err)
+	}
+	if post.Status == models.StatusPublished {
+		prevPost = post
 	}
 }
 
