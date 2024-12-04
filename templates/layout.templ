@@ -1,8 +1,12 @@
 package templates
 
-import "fmt"
+import (
+	"blog/models"
+	"fmt"
+	"path"
+)
 
-templ Layout(title string) {
+templ Layout(title string, posts []*models.Post) {
 	<!DOCTYPE html>
 	<html>
 		<head>
@@ -22,18 +26,18 @@ templ Layout(title string) {
 		</head>
 		<body class="relative font-inter antialiased">
 			<main class="relative min-h-screen flex flex-col bg-white overflow-hidden">
-				@menu()
+				@menu(posts)
 				{ children... }
 			</main>
 		</body>
 	</html>
 }
 
-templ menu() {
+templ menu(posts []*models.Post) {
 	<header class="bg-green-600">
 		<nav class="mx-auto flex max-w-7xl h-20 items-center justify-between p-6 lg:px-8" aria-label="Global">
 			<div class="flex lg:flex-1">
-				<a href="/" class="p-1.5">
+				<a href="/" class="p-1.5 focus:outline-none focus-visible:outline-none">
 					<span class="sr-only">Home</span>
 					<img class="h-16 sm:h-18 w-auto" src="/assets/images/logo_horizontal.svg"/>
 				</a>
@@ -51,8 +55,32 @@ templ menu() {
 				</button>
 			</div>
 			<div class="hidden lg:flex lg:gap-x-12">
-				<a class="text-sm/6 font-semibold text-green-900" href={ templ.SafeURL(fmt.Sprintf("/%s", MapPath)) }>Op de kaart</a>
-				<a class="text-sm/6 font-semibold text-green-900" href={ templ.SafeURL(fmt.Sprintf("/%s", AboutPath)) }>Over ons</a>
+				<div class="relative inline-block text-left">
+					<div>
+						<button
+							type="button"
+							class="inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm/6  font-semibold text-green-900 hover:bg-gray-50"
+							id="menu-button"
+							_="on click toggle .hidden on #dropdown"
+							aria-expanded="true"
+							aria-haspopup="true"
+						>
+							Blogs
+							<svg class="-mr-1 size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+								<path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+							</svg>
+						</button>
+					</div>
+					<div id="dropdown" class="hidden absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+						<div class="py-1" role="none">
+							for _, post := range posts {
+								<a href={ templ.SafeURL(path.Join(post.Slug(), "/")) } class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100" role="menuitem" tabindex="-1" id="menu-item-0">{ fmt.Sprintf("Dag %d: %s", post.Day, post.Title) }</a>
+							}
+						</div>
+					</div>
+				</div>
+				<a class="rounded-md  px-3 py-2 text-sm/6  font-semibold text-green-900 hover:bg-gray-50" href={ templ.SafeURL(fmt.Sprintf("/%s", MapPath)) }>Op de kaart</a>
+				<a class="rounded-md  px-3 py-2 text-sm/6  font-semibold text-green-900 hover:bg-gray-50" href={ templ.SafeURL(fmt.Sprintf("/%s", AboutPath)) }>Over ons</a>
 			</div>
 		</nav>
 		<!-- Mobile menu, show/hide based on menu open state. -->
@@ -61,7 +89,7 @@ templ menu() {
 			<div class="fixed inset-0 z-30"></div>
 			<div class="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto  bg-green-600 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-green-900/10">
 				<div class="h-20 flex items-center justify-between">
-					<a href="#" class="-m-1.5 p-1.5">
+					<a href="#" class="-m-1.5 p-1.5  focus:outline-none focus-visible:outline-none">
 						<span class="sr-only">Onze blog</span>
 						<img class="h-16 sm:h-18 w-auto" src="/assets/images/logo_horizontal.svg"/>
 					</a>
@@ -79,6 +107,30 @@ templ menu() {
 				<div class="mt-6 flow-root">
 					<div class="-my-6 divide-y divide-green-500/10">
 						<div class="space-y-2 py-6">
+							<div class="relative inline-block w-full text-left">
+								<div>
+									<button
+										type="button"
+										class="inline-flex w-full justify-left gap-x-1.5 rounded-md  px-3 py-2 text-sm/6  font-semibold text-green-900 hover:bg-gray-50"
+										id="menu-button"
+										_="on click toggle .hidden on #dropdown-mobile"
+										aria-expanded="true"
+										aria-haspopup="true"
+									>
+										Blogs
+										<svg class="-mr-1 size-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+											<path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+										</svg>
+									</button>
+								</div>
+								<div id="dropdown-mobile" class=" mt-2 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+									<div class="py-1" role="none">
+										for _, post := range posts {
+											<a href={ templ.SafeURL(path.Join(post.Slug(), "/")) } class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100" role="menuitem" tabindex="-1" id="menu-item-0">{ fmt.Sprintf("Dag %d: %s", post.Day, post.Title) }</a>
+										}
+									</div>
+								</div>
+							</div>
 							<a class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-green-900 hover:bg-green-50" href={ templ.SafeURL(fmt.Sprintf("/%s", MapPath)) }>Op de kaart</a>
 							<a class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-green-900 hover:bg-green-50" href={ templ.SafeURL(fmt.Sprintf("/%s", AboutPath)) }>Over ons</a>
 						</div>

@@ -1,10 +1,12 @@
 package templates
 
+import "blog/models"
+
 var MapPath = "kaart"
 var AboutPath = "over-ons"
 
-templ MapPage() {
-	@Layout("Op de kaart") {
+templ MapPage(posts []*models.Post) {
+	@Layout("Op de kaart", posts) {
 		@headerComponent("Op de kaart", "20 juli - 16 aug 2025", "/assets/images/kaarten/route-kaart.png")
 		<div class="max-w-6xl mx-6 xl:mx-auto mb-24">
 			<div class="grid grid-cols-1 md:grid-cols-4 gap-4 space-y-4">
@@ -24,8 +26,8 @@ templ MapPage() {
 	}
 }
 
-templ AboutPage() {
-	@Layout("Over ons") {
+templ AboutPage(posts []*models.Post) {
+	@Layout("Over ons", posts) {
 		@headerComponent("Dit zijn wij", "", "/assets/images/gezin.jpeg")
 		<div class="max-w-6xl mx-6 xl:mx-auto mb-24">
 			<div class="grid columns-2 md:columns-3 gap-4 space-y-4">

@@ -9,6 +9,7 @@ import (
 
 type BlogData struct {
 	Post     *models.Post
+	Posts    []*models.Post
 	Next     *models.Post
 	Previous *models.Post
 }
@@ -93,7 +94,7 @@ templ ImageWithTitle(image models.Image, index int) {
 }
 
 templ ContentPage(data BlogData) {
-	@Layout(data.Post.Title) {
+	@Layout(data.Post.Title, data.Posts) {
 		@blogHeaderComponent(data)
 		@contentComponent(data)
 		@modal(data)

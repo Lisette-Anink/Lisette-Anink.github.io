@@ -18,6 +18,7 @@ const rootPath = "public"
 
 func main() {
 	posts := models.GetJsonPosts()
+	published := models.Filter(posts, models.StatusPublished)
 	// Output path.
 	if err := os.Mkdir(rootPath, 0755); err != nil && !os.IsExist(err) {
 		log.Fatalf("failed to create output directory: %v", err)
@@ -29,15 +30,14 @@ func main() {
 		log.Fatalf("failed to create output file: %v", err)
 	}
 	// Write it out.
-	err = templates.IndexPage(posts).Render(context.Background(), f)
+	err = templates.IndexPage(published).Render(context.Background(), f)
 	if err != nil {
 		log.Fatalf("failed to write index page: %v", err)
 	}
 
 	// Create the Static pages
-	addStatic(rootPath, templates.MapPath, templates.MapPage())
-	addStatic(rootPath, templates.AboutPath, templates.AboutPage())
-	published := models.Filter(posts, models.StatusPublished)
+	addStatic(rootPath, templates.MapPath, templates.MapPage(published))
+	addStatic(rootPath, templates.AboutPath, templates.AboutPage(published))
 	// Create a page for each post.
 	for i, post := range published {
 		createPostPage(post, i, published)
@@ -60,7 +60,7 @@ func createPostPage(post *models.Post, i int, filtered []*models.Post) {
 	f := createDirAndIndex(dir)
 
 	// Create the output file.
-	data := templates.BlogData{Post: post, Next: nextPost, Previous: prevPost}
+	data := templates.BlogData{Post: post, Posts: filtered, Next: nextPost, Previous: prevPost}
 	err := templates.ContentPage(data).Render(context.Background(), f)
 	if err != nil {
 		log.Fatalf("failed to write output file: %v", err)

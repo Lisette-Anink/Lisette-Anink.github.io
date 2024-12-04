@@ -6,8 +6,8 @@ import (
 	"path"
 )
 
-templ IndexPage(posts []models.Post) {
-	@Layout("Op avontuur door Scandinavië") {
+templ IndexPage(posts []*models.Post) {
+	@Layout("Op avontuur door Scandinavië", posts) {
 		@headerComponent("Op avontuur door Scandinavië", "20 juli - 16 aug 2025", "/assets/images/eidfjord/Hardangerfjord-Ulvik-839809560.jpeg")
 		<div class="max-w-6xl mx-6 xl:mx-auto mb-24">
 			<div class="columns-2 md:columns-3 gap-4 space-y-4">
@@ -51,7 +51,7 @@ templ headerComponent(title, subtitle, image string) {
 	</div>
 }
 
-templ postLinkCard(post models.Post) {
+templ postLinkCard(post *models.Post) {
 	<div class="relative rounded-xl overflow-hidden">
 		<a href={ templ.SafeURL(path.Join(post.Slug(), "/")) }>
 			<div class="absolute inset-0 text-white z-10 before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity rounded-xl">
