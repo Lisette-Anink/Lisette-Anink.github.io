@@ -1,4 +1,18 @@
 package templates
-templ NotFoundComponent() {
-	<div>404 - Not found</div>
+
+import "blog/models"
+
+templ NotFoundComponent(posts []*models.Post) {
+	@Layout("Niet gevonden - Op avontuur door Scandinavië", posts) {
+		@headerComponent("Op avontuur door Scandinavië", "20 juli - 16 aug 2025", "/assets/images/eidfjord/Hardangerfjord-Ulvik-839809560.jpeg")
+		<div class="max-w-6xl mx-6 xl:mx-auto mb-24">
+			<div class="columns-2 md:columns-3 gap-4 space-y-4">
+				<article>
+					<p class="mb-2">
+						Oeps deze pagina bestaat niet!
+					</p>
+				</article>
+			</div>
+		</div>
+	}
 }

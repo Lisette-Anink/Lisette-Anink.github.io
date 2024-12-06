@@ -34,10 +34,10 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to write index page: %v", err)
 	}
-
+	add404(published)
 	// Create the Static pages
-	addStatic(rootPath, templates.MapPath, templates.MapPage(published))
-	addStatic(rootPath, templates.AboutPath, templates.AboutPage(published))
+	addStatic(templates.MapPath, templates.MapPage(published))
+	addStatic(templates.AboutPath, templates.AboutPage(published))
 	// Create a page for each post.
 	for i, post := range published {
 		createPostPage(post, i, published)
@@ -70,7 +70,7 @@ func createPostPage(post *models.Post, i int, filtered []*models.Post) {
 	}
 }
 
-func addStatic(rootPath string, pagePath string, template templ.Component) {
+func addStatic(pagePath string, template templ.Component) {
 	dir := path.Join(rootPath, pagePath)
 	f := createDirAndIndex(dir)
 
@@ -91,4 +91,18 @@ func createDirAndIndex(dir string) *os.File {
 		log.Fatalf("failed to create output file: %v", err)
 	}
 	return f
+}
+
+func add404(posts []*models.Post) {
+	// Create an index page.
+	name := path.Join(rootPath, "404.html")
+	f, err := os.Create(name)
+	if err != nil {
+		log.Fatalf("failed to create output file: %v", err)
+	}
+	// Write it out.
+	err = templates.NotFoundComponent(posts).Render(context.Background(), f)
+	if err != nil {
+		log.Fatalf("failed to write index page: %v", err)
+	}
 }
