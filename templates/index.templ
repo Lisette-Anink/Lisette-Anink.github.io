@@ -19,12 +19,7 @@ templ IndexPage(posts []*models.Post) {
 						Op deze site houden wij je op de hoogte van onze reis. Als voorbereiding hebben we alvast de geplande reisdagen toegevoegd. Tijdens de reis zullen we hier steeds een extra stukje toevoegen.
 					</p>
 				</article>
-				for _, post := range posts {
-					if post.Status == models.StatusPublished {
-						@postLinkCard(post)
-					}
-				}
-				<div class="relative rounded-xl overflow-hidden">
+				<div class="relative rounded-xl overflow-hidden ">
 					<a href="kaart">
 						<div class="absolute inset-0 text-white z-10 before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity rounded-xl">
 							<div class=" absolute inset-x-0 bottom-0 p-2">
@@ -33,6 +28,16 @@ templ IndexPage(posts []*models.Post) {
 						</div>
 						<img class="w-full object-cover aspect-9/16 rounded-xl shadow" src="/assets/images/kaarten/route-kaart.png" alt="Onze hele route"/>
 					</a>
+				</div>
+			</div>
+			<div class="mt-8">
+				<h2 class="font-medium text-lg">Onze blogs:</h2>
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+					for _, post := range posts {
+						if post.Status == models.StatusPublished {
+							@postLinkCard(post)
+						}
+					}
 				</div>
 			</div>
 		</div>
@@ -52,7 +57,7 @@ templ headerComponent(title, subtitle, image string) {
 }
 
 templ postLinkCard(post *models.Post) {
-	<div class="relative rounded-xl overflow-hidden">
+	<div class="relative rounded-xl overflow-hidden ">
 		<a href={ templ.SafeURL(path.Join(post.Slug(), "/")) }>
 			<div class="absolute inset-0 text-white z-10 before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity rounded-xl">
 				<div class=" absolute inset-x-0 bottom-0 p-2">
