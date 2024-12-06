@@ -4,8 +4,8 @@
         "date": "2025-07-20T00:00:00Z",
         "Title": "Reis naar Kiel",
         "Day": 1,
-        "Status": "draft",
-        "Author":"P",
+        "Status": "published",
+        "Author":"Lisette",
         "PublishedAt":"2024-12-03T00:00:00Z",
         "HeaderImage": {
             "Url": "/assets/images/dag_1/20220701_Stena_Germanica-29-9.jpeg",
@@ -30,7 +30,7 @@
         "Date": "2025-07-21T00:00:00Z",
         "Title": "Gøtenburg en Uddevalla",
         "Day": 2,
-        "Author":"P",
+        "Author":"Lisette",
         "Status": "published",
         "PublishedAt":"2024-12-03T00:00:00Z",
         "HeaderImage": {
@@ -38,7 +38,7 @@
             "Title": "Botenhuis bij het huisje",
             "Alt": "Botenhuis bij het huisje"
         },
-        "Content": "We worden wakker op de boot. Om 9:15 zullen we in Gøtenburg aankomen.\n\nWe kunnen pas om 15:00 in ons eerste huisje van deze reis dus we zullen de dag in Gøtenburg besteden voordat we de reis van 1 uur naar Uddevalla maken.\n\n[Ons huisje](https://www.airbnb.nl/rooms/22492525?photo_id=1689009824&source_impression_id=p3_1731830734_P3SHn03PPLP3ex8Y) ligt bij Uddevalla",
+        "Content": "We worden wakker op de boot. Om 9:15 zullen we in Gøtenburg aankomen.\n\nWe kunnen pas om 15:00 in ons eerste huisje van deze reis dus we zullen de dag in Gøtenburg besteden voordat we de reis van 1 uur naar Uddevalla maken.\n\n[Ons huisje](https://www.airbnb.nl/rooms/22492525) ligt bij Uddevalla",
         "Images": [
 
             {
@@ -65,17 +65,17 @@
     },
     {
         "Date": "2025-07-25T00:00:00Z",
-        "Title": "Reis naar Nordre Land",
+        "Title": "Naar Noorwegen!",
         "Day": 6,
-        "Status": "preview",
-        "Author": "L",
+        "Status": "published",
+        "Author": "Lisette",
         "PublishedAt":"2024-12-03T00:00:00Z",
         "HeaderImage": {
             "Url": "/assets/images/nordre-land/a226a0fb-f8da-492a-ac65-c072815dc088.jpeg",
             "Title": "Huisje in Uddavalla (foto van AirBnB)",
             "Alt": "huisje in Uddevalla"
         },
-        "Content": "## Vandaag reizen we naar Noorwegen.\n\nEr staat ons een reis voor de boeg van ongeveer 4:45 uur. Onze bestemming is Nordre Land, een klein gehucht ten westen van Lillehamer.",
+        "Content": "## Vandaag reizen we naar Noorwegen.\n\nEr staat ons een reis voor de boeg van ongeveer 4:45 uur. Onze bestemming is Nordre Land, een klein gehucht ten westen van Lillehamer. Hier zullen we drie nachten verblijven in een [huisje](https://www.airbnb.nl/rooms/51357246) met een leuke tuin.",
         "Images": [
             {
                 "Url": "/assets/images/kaarten/uddevalla-nordre-land.png",
@@ -115,7 +115,7 @@
             "Title": "Huisje in Hemsedal (foto van AirBnB)",
             "Alt": "huisje in Hemsedal"
         },
-        "Content": "## En we gaan verder!\n\nOnze kortste route van deze reis, in bijna 2 uur rijden we van Nordre Land naar Hemsedal. We zullen voor onderweg nog iets leuks moeten vinden want we kunnen pas aan het einde van de middag in ons nieuwe huisje terecht. Dat zal vast gaan lukken!\n\nWe blijven twee nachten in Hemsedal voordat we doorrijden richting de fjorden.",
+        "Content": "## En we gaan verder!\n\nOnze kortste route van deze reis, in bijna 2 uur rijden we van Nordre Land naar Hemsedal. We zullen onderweg nog iets leuks moeten doen want we kunnen pas aan het einde van de middag in ons nieuwe [huisje](https://www.airbnb.nl/rooms/17936519) terecht. Dat zal vast gaan lukken!\n\nWe blijven twee nachten in Hemsedal voordat we doorrijden richting de fjorden.",
         "Images": [
             {
                 "Url": "/assets/images/kaarten/nordre-land-hemsedal.png",
@@ -151,7 +151,7 @@
     },
     {
         "Day": 11,
-        "Status": "draft",
+        "Status": "published",
         "PublishedAt":"2024-12-03T00:00:00Z",
         "Title": "Naar Eidfjord",
         "Date": "2025-07-30T00:00:00Z",
@@ -160,8 +160,23 @@
             "Title": "Huisje in Eidfjord (foto van AirBnB)",
             "Alt": "huisje in Eidfjord"
         },
-        "Content": "Van Hemsedal naar Eidfjord is als je de zuidelijke route neemt ongeveer x uur rijden. Wij willen graag de Noordelijke route nemen vandaag. We gaan stoppen bij de staafkerk van Borgund. En nemen daarna een touristische route door de bergen en langs de fjorden. Totaal zou dit zo'n 4 uur rijden zijn maar we zullen vaak stil staan om foto's te nemen.\n\n Het huisje bij Eidfjord ligt net voorbij de Vøringfossen een van de mooiste watervallen van Noorwegen. Vanuit hier kunnen we het Hardangerfjord, de Hardangervidda, de Folgefonna gletsjer en nog veel meer bezoeken. We blijven hier een week.",
+        "Content": "Van Hemsedal naar Eidfjord is als je de zuidelijke route neemt ongeveer 2:45 uur rijden. Echter, wij willen graag de Noordelijke route nemen vandaag. We gaan stoppen bij de staafkerk van Borgund. En nemen daarna een touristische route door de bergen en langs de fjorden. Totaal zou dit zo'n 4 uur rijden zijn maar we zullen vaak stil staan om foto's te nemen.\n\n Het huisje bij Eidfjord ligt net voorbij de Vøringfossen een van de mooiste watervallen van Noorwegen. Vanuit hier kunnen we het Hardangerfjord, de Hardangervidda, de Folgefonna gletsjer en nog veel meer bezoeken. We blijven hier een week.",
         "Images": [
+            {
+                "Url": "/assets/images/eidfjord/Borgund-stavkirke-1.jpeg",
+                "Title": "Staafkerk in Borgund uit 1200 willen we onderweg bezoeken",
+                "Alt": "Borgund Stavkirke"
+            },
+            {
+                "Url": "/assets/images/eidfjord/Stegastein.jpeg",
+                "Title": "Uitzichtpunt Stegastein passeren we onderweg en willen we wel even bekijken",
+                "Alt": "Stegastein uitzichtpunt"
+            },
+            {
+                "Url": "/assets/images/eidfjord/Hardangerfjord-Ulvik-839809560.jpeg",
+                "Title": "Het Hardangerfjord",
+                "Alt": "Hardangerfjord"
+            },
             {
                 "Url": "/assets/images/kaarten/hemsedal-eidfjord.png",
                 "Title": "De route van Hemsedal naar Eidfjord",
@@ -171,7 +186,7 @@
                 "Url": "/assets/images/eidfjord/30659af2-981a-410a-99b8-c7ccba693622.jpeg",
                 "Title": "Huisje in Eidfjord (foto van AirBnB)",
                 "Alt": "huisje in Eidfjord"
-            },
+             },
             {
                 "Url": "/assets/images/eidfjord/b4c2acc0-9b3b-4a48-acc4-3cf943886217.jpeg",
                 "Title": "Huisje in Eidfjord (foto van AirBnB)",
@@ -181,7 +196,7 @@
     },
     {
         "Day": 18,
-        "Status": "draft",
+        "Status": "published",
         "PublishedAt":"2024-12-03T00:00:00Z",
         "Title": "Naar Suldalsosen",
         "Date": "2025-08-06T00:00:00Z",
@@ -190,7 +205,7 @@
             "Title": "Huisje in Suldalsosen (foto van AirBnB)",
             "Alt": "huisje in Suldalsosen"
         },
-        "Content": "3 uur rijden",
+        "Content": "We verlaten het Hardangerfjord en gaan richting het zuiden. Het is 3 uur rijden naar Sundalsosen. Ons huisje staat vlak langs een meer. Het water zal wel koud zijn maar gelukkig heeft dat de jongens nooit tegengehouden... ",
         "Images": [
             {
                 "Url": "/assets/images/kaarten/eidfjord-sundalsosen.png",
@@ -226,7 +241,7 @@
     },
     {
         "Day": 22,
-        "Status": "draft",
+        "Status": "published",
         "PublishedAt":"2024-12-03T00:00:00Z",
         "Title": "Naar Farsund",
         "Date": "2025-08-10T00:00:00Z",
@@ -235,7 +250,7 @@
                 "Title": "Huisje in Farsund (foto van AirBnB)",
                 "Alt": "huisje in Farsund"
             },
-        "Content": "5 uur rijden",
+        "Content": "We laten vandaag Sundalsosen achter ons en hebben een rit van 5 uur op het programma. Het voert ons langs/door de stad Stavanger en door langs de zuid-westkust naar Farsund. Hier verblijven we 4 nachten.",
         "Images": [
             {
                 "Url": "/assets/images/kaarten/sundalsosen-farsund.png",
@@ -266,7 +281,7 @@
     },
     {
         "Day": 26,
-        "Status": "draft",
+        "Status": "published",
         "PublishedAt":"2024-12-03T00:00:00Z",
         "Title": "Naar Ribe, Denemarken",
         "Date": "2025-08-14T00:00:00Z",
@@ -316,7 +331,7 @@
     },
     {
         "Day": 28,
-        "Status": "draft",
+        "Status": "published",
         "PublishedAt":"2024-12-03T00:00:00Z",
         "Title": "Naar huis",
         "Date": "2025-08-16T00:00:00Z",
@@ -325,7 +340,7 @@
             "Title": "Route naar huis",
             "Alt": "Route naar huis"
         },
-        "Content": "We vullen dit later",
+        "Content": "## Aan alles komt een einde.\n\nWe hebben vandaag onze laatste reisdag gepland en die voert ons weer naar huis. Het wordt nog 7,5 uur autorijden maar dan slaap je wel lekker in je eigen bed.",
         "Images": [
             {
                 "Url": "/assets/images/kaarten/ribe-heerhugowaard.png",
