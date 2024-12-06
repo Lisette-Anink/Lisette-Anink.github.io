@@ -85,3 +85,22 @@ func Filter(posts []Post, status string) []*Post {
 	}
 	return filtered
 }
+
+func FormattedDate(inputTime time.Time, format string) string {
+
+	r := strings.NewReplacer(
+		"January", "januari",
+		"February", "februari",
+		"March", "maart",
+		"April", "april",
+		"May", "mei",
+		"June", "juni",
+		"July", "juli",
+		"August", "augustus",
+		"September", "september",
+		"October", "oktober",
+		"November", "november",
+		"December", "december")
+
+	return r.Replace(inputTime.Format(format))
+}
