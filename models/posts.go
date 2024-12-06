@@ -3,9 +3,9 @@ package models
 import (
 	"bytes"
 	"cmp"
+	"embed"
 	"encoding/json"
 	"log"
-	"os"
 	"path"
 	"slices"
 	"strconv"
@@ -54,16 +54,28 @@ func (post Post) HTML() string {
 	return buf.String()
 }
 
+//go:embed json
+var jsonFiles embed.FS
+
 func GetJsonPosts() []Post {
 	var posts []Post
-	content, err := os.ReadFile("./posts.json")
+	pathName := "json"
+	files, err := jsonFiles.ReadDir(pathName)
 	if err != nil {
 		log.Fatal("Error when opening file: ", err)
 	}
-
-	err = json.Unmarshal(content, &posts)
-	if err != nil {
-		log.Fatal("Error during Unmarshal(): ", err)
+	for i, entry := range files {
+		var filePosts []Post
+		log.Printf("entry %d: %+v", i, entry)
+		content, err := jsonFiles.ReadFile(strings.Join([]string{pathName, entry.Name()}, "/"))
+		if err != nil {
+			log.Fatal("Error when opening file: ", err)
+		}
+		err = json.Unmarshal(content, &filePosts)
+		if err != nil {
+			log.Fatal("Error during Unmarshal(): ", err)
+		}
+		posts = append(posts, filePosts...)
 	}
 
 	slices.SortFunc(posts, func(i, j Post) int {

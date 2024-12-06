@@ -1,0 +1,26 @@
+[{
+    "date": "2025-07-20T00:00:00Z",
+    "Title": "Nieuwe post",
+    "Day": 1,
+    "Status": "draft",
+    "Author":"Lisette",
+    "PublishedAt":"2024-12-03T00:00:00Z",
+    "HeaderImage": {
+        "Url": "/assets/images/dag_1/20220701_Stena_Germanica-29-9.jpeg",
+        "Title": "De boot",
+        "Alt": "De boot"
+    },
+    "Images": [
+        {
+            "Url": "/assets/images/dag_1/20220701_Stena_Germanica-29-9.jpeg",
+            "Title": "De boot",
+            "Alt": "De boot"
+        },
+        {
+            "Url": "/assets/images/dag_1/M-V-Stena_Line2-big.jpeg",
+            "Title": "De boot",
+            "Alt": "De boot in de haven"
+        }
+    ],
+    "Content": "## Het avontuur begint!\n\nVandaag vertrekken we naar Kiel. Het is een reis van ongeveer 5,5 uur naar de haven van Kiel waar we de boot naar Gøtenburg, Zweden.\n\nDe boot vertrekt om 17:45. We hebben een tafel in het restaurant gereserveerd aan het raam en een binnenhut om in te slapen."
+}]
