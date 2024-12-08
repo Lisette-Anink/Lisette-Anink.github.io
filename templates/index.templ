@@ -10,16 +10,28 @@ templ IndexPage(posts []*models.Post) {
 	@Layout("Op avontuur door Scandinavië", posts) {
 		@headerComponent("Op avontuur door Scandinavië", "20 juli - 16 aug 2025", "/assets/images/eidfjord/Hardangerfjord-Ulvik-839809560.jpeg")
 		<div class="max-w-6xl mx-6 xl:mx-auto mb-24">
-			<div class="columns-2 md:columns-3 gap-4 space-y-4">
-				<article>
-					<p class="mb-2">
-						Wij gaan op avontuur! vanaf zondag 20 juli tot zaterdag 17 augustus zullen we op reis zijn door Zweden, Noorwegen en (heel kort) Denemarken.
-					</p>
-					<p class="mb-2">
-						Op deze site houden wij je op de hoogte van onze reis. Als voorbereiding hebben we alvast de geplande reisdagen toegevoegd. Tijdens de reis zullen we hier steeds een extra stukje toevoegen.
-					</p>
-				</article>
-				<div class="relative rounded-xl overflow-hidden ">
+			<div class="grid grid-cols-2 md:grid-cols-3 gap-4 space-y-4">
+				<div class="md:col-span-2">
+					<article>
+						<h2>Wij gaan op avontuur! </h2>
+						<p class="mb-2">
+							vanaf zondag 20 juli tot zaterdag 17 augustus zullen we op reis zijn door Zweden, Noorwegen en (heel kort) Denemarken.
+						</p>
+						<p class="mb-2">
+							Op deze site houden wij je op de hoogte van onze reis. Als voorbereiding hebben we alvast de geplande reisdagen toegevoegd. Tijdens de reis zullen we hier steeds een extra stukje toevoegen.
+						</p>
+					</article>
+					<div class="relative rounded-xl">
+						<p class="font-medium">
+							Lees ons nieuwste blog geschreven op
+							<span>
+								{ models.FormattedDate(models.LatestPost(posts).PublishedAt, "02 January 2006") }
+							</span>
+						</p>
+						@postLinkCard(models.LatestPost(posts))
+					</div>
+				</div>
+				<div class="relative rounded-xl overflow-hidden  aspect-9/16 ">
 					<a href="kaart">
 						<div class="absolute inset-0 text-white z-10 before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity rounded-xl">
 							<div class=" absolute inset-x-0 bottom-0 p-2">
@@ -57,7 +69,7 @@ templ headerComponent(title, subtitle, image string) {
 }
 
 templ postLinkCard(post *models.Post) {
-	<div class="relative rounded-xl overflow-hidden ">
+	<div class="relative rounded-xl overflow-hidden max-h-96">
 		<a href={ templ.SafeURL(path.Join(post.Slug(), "/")) }>
 			<div class="absolute inset-0 text-white z-10 before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/50 before:transition-opacity rounded-xl">
 				<div class=" absolute inset-x-0 bottom-0 p-2">

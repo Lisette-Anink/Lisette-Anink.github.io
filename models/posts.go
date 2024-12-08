@@ -98,6 +98,16 @@ func Filter(posts []Post, status string) []*Post {
 	return filtered
 }
 
+func LatestPost(posts []*Post) *Post {
+	latest := posts[0]
+	for _, post := range posts {
+		if n := post.PublishedAt.Compare(latest.PublishedAt); n > 0 {
+			latest = post
+		}
+	}
+	return latest
+}
+
 func FormattedDate(inputTime time.Time, format string) string {
 
 	r := strings.NewReplacer(

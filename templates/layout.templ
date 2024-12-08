@@ -61,7 +61,8 @@ templ menu(posts []*models.Post) {
 							type="button"
 							class="inline-flex w-full justify-center gap-x-1.5 rounded-md  px-3 py-2 text-sm/6  font-semibold text-green-900 hover:bg-gray-50"
 							id="menu-button"
-							_="on click toggle .hidden on #dropdown"
+							_="on click toggle .hidden on #dropdown
+							on mouseover toggle .hidden on #dropdown"
 							aria-expanded="true"
 							aria-haspopup="true"
 						>
@@ -71,7 +72,15 @@ templ menu(posts []*models.Post) {
 							</svg>
 						</button>
 					</div>
-					<div id="dropdown" class="hidden absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+					<div
+						id="dropdown"
+						_="on mouseleave add .hidden to me"
+						class="hidden absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
+						role="menu"
+						aria-orientation="vertical"
+						aria-labelledby="menu-button"
+						tabindex="-1"
+					>
 						<div class="py-1" role="none">
 							for _, post := range posts {
 								<a href={ templ.SafeURL(path.Join("/", post.Slug(), "/")) } class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-100" role="menuitem" tabindex="-1" id="menu-item-0">{ fmt.Sprintf("Dag %d: %s", post.Day, post.Title) }</a>

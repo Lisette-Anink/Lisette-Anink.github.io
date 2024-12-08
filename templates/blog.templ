@@ -193,7 +193,7 @@ templ author(post *models.Post) {
 				<p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
 					{ post.Author }
 				</p>
-				<p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">{ models.FormattedDate(post.PublishedAt, "02 January 2006") }</p>
+				<p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">Laatste aanpassing { models.FormattedDate(post.PublishedAt, "02 January 2006") }</p>
 			</div>
 		</div>
 	</div>
