@@ -27,7 +27,7 @@ templ blogHeaderComponent(data BlogData) {
 }
 
 templ contentComponent(data BlogData) {
-	<div class="max-w-6xl mx-6 xl:mx-auto mb-24">
+	<div class="max-w-6xl mx-6 xl:mx-auto mb-12">
 		@nextPrevButtons(data)
 		<div class="columns-2 md:columns-3 gap-4 space-y-4">
 			if data.Post.Author != "" {
@@ -40,6 +40,9 @@ templ contentComponent(data BlogData) {
 				@ImageWithTitle(image, i)
 			}
 		</div>
+	</div>
+	<div class="max-w-6xl w-full mx-6 xl:mx-auto mb-24">
+		@nextPrevButtons(data)
 	</div>
 }
 
